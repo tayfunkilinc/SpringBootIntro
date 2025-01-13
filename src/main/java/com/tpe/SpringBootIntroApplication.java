@@ -11,9 +11,6 @@ public class SpringBootIntroApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootIntroApplication.class, args);
 		//burada tomcat iceride entegre oldugu icin tomcat burdan calistiriliyo
-
-
-
 		/*Student student = new Student();
 		student.getEmail();
 		student.setName(""); //direk burdan ulastik gormek icin bunu kullandik

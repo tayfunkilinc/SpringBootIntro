@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -41,7 +40,7 @@ public class Student {
     @Column(nullable = false)
     /*final*/ private String lastname;
 
-    @NotBlank(message = "grade can not be blank!!")
+    //@NotBlank(message = "grade can not be blank!!")
     @Column(nullable = false)
     private Integer grade;
 
@@ -54,4 +53,5 @@ public class Student {
     private LocalDateTime createDate=LocalDateTime.now();
 
     //getter-setter
+
 }
