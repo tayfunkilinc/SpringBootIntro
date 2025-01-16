@@ -143,15 +143,17 @@ public class StudentService {
     }
 
     //meraklısına:)
-    public List<Student> getAllStudentByNameOrLastname(String word) {
+    public List<Student> getAllStudentByNameOrLastname(String word) { //burda Or ile kelime sayisini arttirabiliriz
         return repository.findByNameOrLastname(word,word);
 
     }
 
 
+    public List<Student> getByKeyword(String word) {
+        return repository.findByNameContainsIgnoreCase(word);
+    }
 
-
-
-
-
+    public List<Student> getByKeywordNameOrLastname(String word) {
+        return repository.findByNameOrLastnameContainsIgnoreCase(word,word);
+    }
 }

@@ -41,6 +41,10 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     //select * from Student where name=:pWord OR lastname=:pWord1
     List<Student> findByNameOrLastname(String word, String word1);
 
+    List<Student> findByNameContainsIgnoreCase(String word);
+
+    List<Student> findByNameOrLastnameContainsIgnoreCase(String word, String word1);
+
 
     //existsBy bu kok kelimeden sonra Email, Grade, Name, LastName gibi fieldlari sonuna ekleyerek bu sekilde override edebiliyoruz
     //burda spring kullanacagimiz icin SQL sorgularini direk yapabildigimiz icin burdan direk JpaRepository 'den miras alarak bu islemleri otomatik yapacagiz

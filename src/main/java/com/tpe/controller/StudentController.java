@@ -1,5 +1,6 @@
 package com.tpe.controller;
 
+import com.fasterxml.jackson.core.PrettyPrinter;
 import com.tpe.domain.Student;
 import com.tpe.dto.StudentDTO;
 import com.tpe.dto.UpdateStudentDTO;
@@ -208,6 +209,21 @@ public class StudentController {
 
     //Meraklisina ODEV: name icinde "...." hecesi gecen ogrencileri filtreleme : herhangi bir kelime icinde geciyorsa filtrele
     //request:http://localhost:8080/students/filter?word=al + GET --> ex:halil, lale
+    @GetMapping("/filter")
+    public ResponseEntity<List<Student>> filterInKeyword(@RequestParam("word") String word){
+        List<Student> studentsList =service.getByKeyword(word);
+        return ResponseEntity.ok(studentsList);
+
+    }
+
+    //Meraklisina ODEV: name icinde "...." hecesi ve lastname icinde "" ... gecen ogrencileri filtreleme : herhangi bir kelime icinde geciyorsa filtrele
+    //request:http://localhost:8080/students/filter/like?word=al + GET --> ex:halil, lale
+    @GetMapping("/filter/like")
+    public ResponseEntity<List<Student>> filterInKeywordNameOrLastname(@RequestParam("word") String word){
+        List<Student> studentsList =service.getByKeywordNameOrLastname(word);
+        return ResponseEntity.ok(studentsList);
+
+    }
 
 
 

@@ -90,3 +90,16 @@
 	</build>
 
 </project>
+<!--Spring Web: RESTful web uygulamaları oluşturmak için Spring MVC'yi kullanır ve varsayılan olarak Tomcat sunucusunu içerir.
+
+Spring Data JPA: Hibernate üzerinden SQL veri depolarıyla Java Persistence API kullanarak veri işlemlerini kolaylaştırır.
+
+PostgreSQL Driver: PostgreSQL veritabanına standart JDBC ile bağlantı sağlar.
+
+Validation: Hibernate Validator ile bean doğrulama işlemlerini gerçekleştirir.
+
+Lombok: Java'da gereksiz kod tekrarını önlemek için anotasyonlar sağlar.
+
+Spring Boot DevTools: Hızlı uygulama yeniden başlatma ve LiveReload gibi geliştirme sürecini hızlandıran araçlar sunar.
+
+Spring Boot Actuator: Uygulama sağlığı, metrikler ve oturumlar gibi yönetim işlemlerini yapabileceğiniz uç noktalar sunar.-->
