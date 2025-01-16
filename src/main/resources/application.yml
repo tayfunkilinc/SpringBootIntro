@@ -1,0 +1,51 @@
+server:
+  port: 8080
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: never
+
+spring:
+  application:
+    name: SpringBootIntro
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springboot_db
+    username: techpro
+    password: password
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        format_sql: true
+
+#log islemleri icin gerekenler
+logging:   #logging.file.name:log/studentapp.log
+  file:
+    name: log/studentapp.log
+  pattern:
+    file: "%d %-5level [%thread] %logger:%msg%n"
+  level:
+    '[org.springframework.web]': WARN
+    '[org.hibernate]': INFO
+    #'[com.tpe]': INFO
+    com:
+      tpe: INFO
+
+#monitorleme islemleri
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info','health','threaddump','env','beans','loggers']
+  info:
+    env:
+      enabled: true
+
+info:
+  application:
+    name: 'Student Management System Demo App '
+    version: '@project.version@'
+    description: 'Demo App For Spring Boot'
