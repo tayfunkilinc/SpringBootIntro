@@ -245,6 +245,30 @@ Loglama, bir yazılım veya sistemin çalışırken yaptığı önemli olayları
         return "welcome";
     }
 
+    /*
+Spring Boot Actuator, bir uygulamanın sağlık durumunu ve çalışma metriklerini izlemek
+için kullanılan bir Spring Boot kütüphanesidir. Actuator, bir uygulamanın
+arka planda nasıl çalıştığını görmenizi sağlar ve uygulamanın izlenebilirliğini artırır.
+Uygulama Sağlık Durumu:
+
+Uygulamanın çalışır durumda olup olmadığını kontrol eder.
+Örneğin: "Veritabanına bağlanabiliyor mu? Sunucu çalışıyor mu?"
+Metrik Takibi:
+
+Uygulamanın performansı hakkında bilgiler sağlar.
+Örneğin: "Kaç kullanıcı sisteme bağlandı? Bellek kullanımı ne durumda?"
+Günlük İşleyişin İzlenmesi:
+
+Loglama, yapılandırmalar, güvenlik bilgileri gibi iç detayları görmenizi sağlar.
+Sorun Giderme:
+
+Hata durumunda, sistemin hangi noktada sorun yaşadığını anlamanıza yardımcı olur
+/actuator/health    Uygulamanın sağlık durumunu gösterir.
+/actuator/metrics   Uygulamanın performansıyla ilgili metrikleri listeler.
+/actuator/env       Uygulamanın çevre değişkenlerini listeler.
+/actuator/loggers   Log seviyelerini ve log yapılandırmalarını kontrol eder.
+/actuator/info      Uygulama hakkında bilgi verir (ör. sürüm bilgisi).
+*/
 
 
 }

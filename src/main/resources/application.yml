@@ -35,7 +35,11 @@ logging:   #logging.file.name:log/studentapp.log
       tpe: INFO
 
 #monitorleme islemleri
-management:
+#http://localhost:8080/actuator/info
+#http://localhost:8080/actuator/env
+#http://localhost:8080/actuator/loggers
+#http://localhost:8080/actuator/threaddump
+management: #actuator ile ilgili bilgilerin yonetimi
   endpoints:
     web:
       exposure:
