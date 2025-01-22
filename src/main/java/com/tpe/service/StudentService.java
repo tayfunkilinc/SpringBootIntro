@@ -133,7 +133,7 @@ public class StudentService {
     public StudentDTO getStudentInfoByDTO(Long id) {
 
         StudentDTO studentDTO = repository.findStudentDtoById(id).
-                orElseThrow(()->new ResourceNotFoundException("Student is not found by id: " + id));;
+                orElseThrow(()->new ResourceNotFoundException("Student is not found by id: " + id));
         return studentDTO;
     }
 

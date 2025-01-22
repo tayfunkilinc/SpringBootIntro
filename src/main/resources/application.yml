@@ -34,6 +34,12 @@ logging:   #logging.file.name:log/studentapp.log
     com:
       tpe: INFO
 
+security:
+  user:
+    name: admin
+    password: password
+
+
 #monitorleme islemleri
 #http://localhost:8080/actuator/info
 #http://localhost:8080/actuator/env
@@ -47,6 +53,21 @@ management: #actuator ile ilgili bilgilerin yonetimi
   info:
     env:
       enabled: true
+
+#Güvenli actuator ayarları
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: [ 'health', 'info' ]
+#        exclude: [ 'env', 'metrics' ]
+#  endpoint:
+#    health:
+#      show-details: never
+#Volkswagen'in Spring Boot Actuator'da gizlemediği şey, muhtemelen hassas uç noktalar (endpoints) veya yapılandırma bilgileri olabilir. Spring Boot Actuator, uygulamanın durumu ve metrikleri hakkında bilgi sağlayan çeşitli uç noktalar sunar. Bu uç noktalar arasında /env, /metrics, /health, /info gibi uç noktalar bulunur.  Eğer bu uç noktalar güvenli bir şekilde yapılandırılmamışsa, hassas bilgiler (örneğin, GPS verileri, yapılandırma bilgileri) kötü niyetli kişiler tarafından erişilebilir hale gelebilir. Bu nedenle, Actuator uç noktalarını güvenli hale getirmek için aşağıdaki önlemler alınmalıdır:
+#Uç Noktaları Güvenli Hale Getirme: Hassas uç noktaları güvenli hale getirmek için kimlik doğrulama ve yetkilendirme mekanizmaları kullanın.
+#Uç Noktaları Kısıtlama: Sadece gerekli olan uç noktaları etkinleştirin ve diğerlerini devre dışı bırakın.
+#Hassas Bilgileri Gizleme: Hassas bilgileri içeren uç noktaları gizleyin veya bu bilgileri maskeleyin.
 
 info:
   application:
