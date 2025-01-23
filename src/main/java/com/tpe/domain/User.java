@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +32,10 @@ public class User {
     @Column(nullable = false, length = 255) //password hash'lenecegi icin length kismini 255 yaptim cunku girilen passworde ekelemler olcak
     private String password;
 
-    @ManyToMany //burada kullanicilarinrole ile iliskisini kurmak yeterli tek tarafli
+    @ManyToMany(fetch = FetchType.EAGER)
+    //SSecurity(AuthProvider) userı getirdiğinde
+    //rolleri de gelmeli ki Yetkisini kontrol edebilsin!!!
+    //burda rollerede ulasabilmesi icin kullanicilari ve rolleride getirebilmesi gerek
+    //burada kullanicilarinrole ile iliskisini kurmak yeterli tek tarafli
     private Set<Role> roles = new HashSet<>(); //bir kullanicidan birden fazla rolu olabilir
 }

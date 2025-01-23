@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +59,7 @@ public class StudentController {
     //SpringBOOT'u selamlama :)
     //http://localhost:8080/students/greet + GET
     //!! @ResponseBody //bu annatation @RestController icinde oldugu icin burda kullanmama gerek yok
+    @PreAuthorize("hasRole('STUDENT')")
     @GetMapping("/greet")
     public String greet(){
         return "Hello Spring Boot :)";
@@ -66,6 +68,8 @@ public class StudentController {
     //1-tüm öğrencileri listeleyelim : READ
     //Request : http://localhost:8080/students + GET
     //Response : tum ogrencilerin listesini dondurecegiz + 200:OK(HttpStatus Code)yani cevabi destekleme kodu
+    @PreAuthorize("hasRole('STUDENT')") //yetkilendirme yaptik
+    //burada ogrencileri listeleme isini kimler yapabilirdiye YETKILENDIRME Yaptik
     @GetMapping
     //@ResponseBody :RestController icerisinde var burada kullanmaya gerek kalmadi
     public ResponseEntity<List<Student>> getAllStudents(){
@@ -107,6 +111,7 @@ public class StudentController {
     //6-query param ile id si verilen öğrenciyi getirme
     //request: http://localhost:8080/students/query?id=1 + GET
     //response : student + 200
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/query")
     public ResponseEntity<Student> getStudent(@RequestParam("id") Long id){
         Student foundStudent = service.getStudentById(id);

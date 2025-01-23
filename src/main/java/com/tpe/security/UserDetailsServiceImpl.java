@@ -1,4 +1,4 @@
-package com.tpe.service;
+package com.tpe.security;
 
 import com.tpe.domain.Role;
 import com.tpe.domain.User;
@@ -36,9 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService { //UserDetail
                                                                user.getPassword(),
                                                                buildGrantedAuthorities(user.getRoles()));
 
-
     }
-
     //userimizin rolleri var bunlari --> GrantedAuthority dondermemiz gerek
     private List<SimpleGrantedAuthority> buildGrantedAuthorities(Set<Role> roles){
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();

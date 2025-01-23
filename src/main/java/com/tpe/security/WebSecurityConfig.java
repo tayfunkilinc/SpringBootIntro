@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) //methodlarda yetkilendirme yapmamizi sagliyor -- methodun yetkisi varmi diye kontrol et diyoruz,
+//hermethoda erisim yetkisi vermek icin bu methodu kullanacagiz
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //spring boot config ayarlarina filtre eklemek icin burda config ayarlarimi yapacagim
 
@@ -27,8 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().//Rest API: session yok : JSON'da bilgiler olmadigi icin yani saklanacak bir sey olmadigi icin csrf disable yapildi
         authorizeHttpRequests().
-                antMatchers("index.html", "/register", "/login"). //en azindan giris sayfalarina izin ver
-                permitAll().
+                antMatchers("index.html", "/register", "/login").permitAll(). //en azindan giris sayfalarina izin ver
                 anyRequest().
                 authenticated().
                 and().
@@ -36,9 +36,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     }
+    //basic authontication her islemde password gondermek data transferini yavaslatir
 
     @Bean
-    private DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -48,8 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //passwordEncoder kullanicini passwordunu hashleyerek saklamak icin bize gerekli
     //authenticationProvider ise DB deki passwordü requestte gelen ile karşılaştırmak için kuulanır
     @Bean
-    private PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder(10); //sorluk seviyesi 4-34 arasi  //BCryptPasswordEncoder sifreleme algoritmasi
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder(10);
+        //sorluk seviyesi 4-34 arasi
+        // BCryptPasswordEncoder sifreleme algoritmasi
     }
 
     @Override
